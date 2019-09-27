@@ -4,7 +4,7 @@ import Grid from './Grid';
 export default class Land extends PIXI.Container {
 
     private readonly grids: Grid[][] = [];
-    public static readonly GRID_COUNT = 9;
+    public static readonly GRID_COUNT = 9 + 3;
 
     public constructor(x: number, y: number) {
         super();

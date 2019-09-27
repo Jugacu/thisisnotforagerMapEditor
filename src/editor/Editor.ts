@@ -29,6 +29,7 @@ export default class Editor {
         this.viewport.setZoom(1);
 
         this.viewport.addChildAt(new EditStage(), 0);
+
     }
 
     /**
