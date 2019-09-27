@@ -38,4 +38,13 @@ export default class Editor {
         return this.pixi.view;
     }
 
+    /**
+     * Resize the editor canvas
+     * @param width
+     * @param height
+     */
+    public resize(width: number, height: number): void {
+        this.pixi.renderer.resize(width, height);
+    }
+
 }

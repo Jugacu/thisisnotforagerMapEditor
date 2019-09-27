@@ -5,3 +5,7 @@ const canvasElement  =  document.querySelector<HTMLElement>('#canvas');
 const editor = new Editor();
 
 canvasElement.appendChild(editor.getView());
+
+window.onresize = () => {
+    editor.resize(window.innerWidth, window.innerHeight);
+};
