@@ -39,8 +39,19 @@ export default class Editor {
             minWidth: 1
         });
 
-        this.viewport.addChildAt(new EditStage(this), 0);
+        const stage = new EditStage(this);
 
+        stage.pivot = new PIXI.Point(
+            stage.pivot.x = stage.width / 2,
+            stage.pivot.y = stage.height / 2
+        );
+
+        stage.position = new PIXI.Point(
+            this.pixi.renderer.width / 2,
+            this.pixi.renderer.height / 2
+        );
+
+        this.viewport.addChildAt(stage, 0);
     }
 
     /**
