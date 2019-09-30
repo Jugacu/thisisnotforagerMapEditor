@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import EditStage from './stage/EditStage';
-import {Viewport} from 'pixi-viewport';
+import {Viewport, WheelEventData} from 'pixi-viewport';
 
 export default class Editor {
 
@@ -8,10 +8,14 @@ export default class Editor {
     private viewport: Viewport;
 
     public constructor() {
+
+        PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+        PIXI.settings.ROUND_PIXELS = true;
+
         this.pixi = new PIXI.Application({
             backgroundColor: 0x392635,
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
         });
 
         this.setViewport();
@@ -22,13 +26,20 @@ export default class Editor {
         this.pixi.stage.addChild(this.viewport);
 
         this.viewport.drag({
-            wheel: false,
+            clampWheel: true,
             mouseButtons: 'left'
         });
 
-        this.viewport.setZoom(1);
+        this.viewport.wheel({
+            smooth: 1
+        });
 
-        this.viewport.addChildAt(new EditStage(), 0);
+        this.viewport.clampZoom({
+            maxHeight: this.pixi.renderer.screen.height,
+            minWidth: 1
+        });
+
+        this.viewport.addChildAt(new EditStage(this), 0);
 
     }
 
@@ -48,4 +59,7 @@ export default class Editor {
         this.pixi.renderer.resize(width, height);
     }
 
+    public get renderer(): PIXI.Renderer {
+        return this.pixi.renderer;
+    }
 }
