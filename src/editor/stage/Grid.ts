@@ -7,8 +7,8 @@ export default class Grid extends PIXI.Graphics {
     public constructor(x: number, y: number) {
         super();
 
-        this.beginFill(0xFF1493);
-        this.lineStyle(1, 0xffd900, 1);
+        this.beginFill(0x0075a7);
+        this.lineStyle(1, 0x0099db, 1);
         this.drawRect(0, 0, Grid.SIZE, Grid.SIZE);
 
         this.position.x = x;
