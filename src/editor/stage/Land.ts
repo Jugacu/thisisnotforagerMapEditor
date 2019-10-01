@@ -35,7 +35,7 @@ export default class Land extends PIXI.Container {
 
     private drawBounds(): void {
         const graphics = new PIXI.Graphics();
-        graphics.lineStyle(5, 0x0099db);
+        graphics.lineStyle(5, 0x1d1d1d);
         graphics.drawRect(this.position.x, this.position.y, this.width, this.height);
         this.addChild(graphics);
     }

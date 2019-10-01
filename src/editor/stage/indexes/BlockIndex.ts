@@ -1,8 +1,8 @@
-type IBlockIndex = {
+export type IBlockIndex = {
     [key: number]: IBlockIndexData;
 };
 
-type IBlockIndexData = {
+export type IBlockIndexData = {
     name: string,
     color: number
 };
@@ -10,6 +10,8 @@ type IBlockIndexData = {
 export default class BlockIndex {
     public static readonly index: IBlockIndex = {
         0: {name: 'water', color: 0x0099db},
+        1: {name: 'sand', color: 0xfee761},
+        2: {name: 'lava', color: 0xcf1020},
     };
 
     public static getBlockData(id: number): IBlockIndexData {

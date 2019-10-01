@@ -17,7 +17,7 @@ export default class EditStage extends PIXI.Container {
         super();
 
         this.gridGenerator = new GridGenerator(this);
-        this.gridGenerator.generateTexture();
+        this.gridGenerator.generateTextures();
 
         this.createLands();
     }

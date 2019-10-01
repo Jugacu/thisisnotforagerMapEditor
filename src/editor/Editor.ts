@@ -1,11 +1,13 @@
 import * as PIXI from 'pixi.js';
 import EditStage from './stage/EditStage';
 import {Viewport, WheelEventData} from 'pixi-viewport';
+import ToolbarManager from './toolbar/ToolbarManager';
 
 export default class Editor {
 
     private readonly pixi: PIXI.Application;
     private viewport: Viewport;
+    private toolbarManager: ToolbarManager;
 
     public constructor() {
 
@@ -17,6 +19,8 @@ export default class Editor {
             width: window.innerWidth,
             height: window.innerHeight,
         });
+
+        this.toolbarManager = new ToolbarManager(this);
 
         this.setViewport();
     }
@@ -52,6 +56,14 @@ export default class Editor {
         );
 
         this.viewport.addChildAt(stage, 0);
+    }
+
+    public pauseDrag(): void {
+        this.viewport.plugins.pause('drag');
+    }
+
+    public startDrag(): void {
+        this.viewport.plugins.resume('drag');
     }
 
     /**
