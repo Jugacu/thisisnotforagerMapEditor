@@ -8,9 +8,10 @@ export default class EditTool extends Tool {
     public constructor(
         element: string,
         editor: Editor,
-        toolbarManager: ToolbarManager
+        toolbarManager: ToolbarManager,
+        shortcut ?: string
     ) {
-        super(element, editor, toolbarManager);
+        super(element, editor, toolbarManager, shortcut);
     }
 
     onGridClick(grid: Grid): void {

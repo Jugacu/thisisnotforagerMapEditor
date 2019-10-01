@@ -9,7 +9,8 @@ export abstract class Tool {
     protected constructor(
         element: string,
         protected readonly editor: Editor,
-        protected readonly toolbarManager: ToolbarManager
+        protected readonly toolbarManager: ToolbarManager,
+        shortcut: string
     ) {
 
         const HTMLElement = document.querySelector<HTMLElement>(element);
@@ -20,11 +21,23 @@ export abstract class Tool {
 
         this.element = HTMLElement;
 
+        if (shortcut) {
+            document.addEventListener('keydown', (e: KeyboardEvent) => {
+                if (shortcut === e.code) {
+                    this.fireOnClick();
+                }
+            });
+        }
+
         this.element.addEventListener('click', () => {
-            this.toolbarManager.setActiveTool(this);
-            this.editor.pauseDrag();
-            this.onToolClick();
+            this.fireOnClick();
         });
+    }
+
+    private fireOnClick = (): void => {
+        this.toolbarManager.setActiveTool(this);
+        this.editor.pauseDrag();
+        this.onToolClick();
     }
 
     public getHTMLElement = (): HTMLElement => {
