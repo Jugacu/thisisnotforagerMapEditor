@@ -18,5 +18,5 @@ export default class EditTool extends Tool {
 
     onToolClick(): void {
     }
-
+    
 }
