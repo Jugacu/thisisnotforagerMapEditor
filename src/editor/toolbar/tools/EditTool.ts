@@ -18,5 +18,10 @@ export default class EditTool extends Tool {
 
     onToolClick(): void {
     }
-    
+
+
+    get cursor(): string {
+        return super.cursor;
+        // return `url('/assets/cursors/edit.svg'), auto`;
+    }
 }
