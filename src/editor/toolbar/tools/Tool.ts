@@ -34,4 +34,8 @@ export abstract class Tool {
     public abstract onToolClick(): void;
 
     public abstract onGridClick(grid: Grid): void;
+
+    public get cursor(): string {
+        return 'default';
+    }
 }

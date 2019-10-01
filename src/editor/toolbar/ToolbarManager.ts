@@ -8,10 +8,14 @@ export default class ToolbarManager {
     private tools: Tool[] = [];
     private activeTool: Tool;
 
+    // Todo: change this canvas to be inserted other way
+    private canvas: HTMLElement;
+
     public constructor(
         private readonly editor: Editor
     ) {
         this.setTools();
+        this.canvas = document.querySelector<HTMLElement>('#canvas');
     }
 
 
@@ -23,6 +27,7 @@ export default class ToolbarManager {
     public setActiveTool = (tool: Tool): void => {
         this.removeSelectedClass();
         tool.getHTMLElement().classList.add('active');
+        this.canvas.style.cursor = tool.cursor;
         this.activeTool = tool;
     }
 

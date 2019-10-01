@@ -21,4 +21,8 @@ export default class MoveTool extends Tool {
         this.editor.startDrag();
     }
 
+
+    get cursor(): string {
+        return 'move';
+    }
 }
