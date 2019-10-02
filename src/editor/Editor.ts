@@ -23,6 +23,9 @@ export default class Editor {
         this.toolbarManager = new ToolbarManager(this);
 
         this.setViewport();
+
+        this.toolbarManager.setActiveToolByIndex(0);
+
     }
 
     private setViewport(): void {

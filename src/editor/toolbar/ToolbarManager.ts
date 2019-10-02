@@ -24,6 +24,14 @@ export default class ToolbarManager {
         this.tools.push(new EditTool('#edit', this.editor, this));
     }
 
+    public setActiveToolByIndex = (index: number): void => {
+        const tool: Tool = this.tools[index];
+        if (tool) {
+            tool.onToolClick();
+            this.setActiveTool(tool);
+        }
+    }
+
     public setActiveTool = (tool: Tool): void => {
         this.removeSelectedClass();
         tool.getHTMLElement().classList.add('active');
@@ -37,7 +45,7 @@ export default class ToolbarManager {
 
     private removeSelectedClass = (): void => {
         this.tools.forEach((tool: Tool) => {
-           tool.getHTMLElement().classList.remove('active');
+            tool.getHTMLElement().classList.remove('active');
         });
     }
 }

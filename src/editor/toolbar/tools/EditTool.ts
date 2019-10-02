@@ -15,16 +15,20 @@ export default class EditTool extends Tool {
         super(element, editor, toolbarManager, shortcut);
     }
 
-    onGridClick(grid: Grid): void {
+    public onGridClick(grid: Grid): void {
         grid.texture = PIXI.utils.TextureCache['grass'];
     }
 
-    onToolClick(): void {
+    public onToolClick(): void {
     }
 
 
-    get cursor(): string {
+    public get cursor(): string {
         return super.cursor;
         // return `url('/assets/cursors/edit.svg'), auto`;
+    }
+
+    public onGridDrag(grid: Grid): void {
+        this.onGridClick(grid);
     }
 }

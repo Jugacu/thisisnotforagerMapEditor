@@ -15,15 +15,18 @@ export default class MoveTool extends Tool {
     }
 
 
-    onGridClick(grid: Grid): void {
+    public onGridClick(grid: Grid): void {
     }
 
-    onToolClick(): void {
+    public onToolClick(): void {
         this.editor.startDrag();
     }
 
 
-    get cursor(): string {
+    public get cursor(): string {
         return 'move';
+    }
+
+    public onGridDrag(grid: Grid): void {
     }
 }

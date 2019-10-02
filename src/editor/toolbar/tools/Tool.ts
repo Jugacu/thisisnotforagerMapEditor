@@ -48,6 +48,8 @@ export abstract class Tool {
 
     public abstract onGridClick(grid: Grid): void;
 
+    public abstract onGridDrag(grid: Grid): void;
+
     public get cursor(): string {
         return 'default';
     }
