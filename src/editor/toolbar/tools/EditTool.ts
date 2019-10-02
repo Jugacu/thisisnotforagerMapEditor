@@ -16,7 +16,7 @@ export default class EditTool extends Tool {
     }
 
     onGridClick(grid: Grid): void {
-        grid.texture = PIXI.utils.TextureCache['lava'];
+        grid.texture = PIXI.utils.TextureCache['grass'];
     }
 
     onToolClick(): void {
