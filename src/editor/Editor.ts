@@ -7,7 +7,7 @@ export default class Editor {
 
     private readonly pixi: PIXI.Application;
     private viewport: Viewport;
-    private toolbarManager: ToolbarManager;
+    public toolbarManager: ToolbarManager;
 
     public constructor() {
 
@@ -56,12 +56,20 @@ export default class Editor {
         );
 
         this.viewport.addChildAt(stage, 0);
+
+        this.pauseDrag();
     }
 
+    /**
+     * Pauses drag viewport plugin
+     */
     public pauseDrag(): void {
         this.viewport.plugins.pause('drag');
     }
 
+    /**
+     * Resumes drag viewport plugin
+     */
     public startDrag(): void {
         this.viewport.plugins.resume('drag');
     }
