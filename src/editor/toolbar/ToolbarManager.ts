@@ -2,6 +2,7 @@ import Editor from '../Editor';
 import {Tool} from './tools/Tool';
 import MoveTool from './tools/MoveTool';
 import EditTool from './tools/EditTool';
+import EraseTool from './tools/EraseTool';
 
 export default class ToolbarManager {
 
@@ -21,7 +22,8 @@ export default class ToolbarManager {
 
     private setTools = (): void => {
         this.tools.push(new MoveTool('#move', this.editor, this, 'Space'));
-        this.tools.push(new EditTool('#edit', this.editor, this));
+        this.tools.push(new EditTool('#edit', this.editor, this, 'KeyE'));
+        this.tools.push(new EraseTool('#erase', this.editor, this, 'KeyD'));
     }
 
     public setActiveToolByIndex = (index: number): void => {
