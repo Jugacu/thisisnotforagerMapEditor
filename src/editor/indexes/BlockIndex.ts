@@ -9,7 +9,7 @@ export type IBlockIndexData = {
 
 export default class BlockIndex {
     public static readonly index: IBlockIndex = {
-        0: {name: 'water', color: 0x0099db},
+        0: {name: 'water', color: 0x2299db},
         1: {name: 'grass', color: 0x63c74d},
         2: {name: 'sand', color: 0xfee761},
         3: {name: 'lava', color: 0xcf1020},

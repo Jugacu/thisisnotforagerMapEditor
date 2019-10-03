@@ -23,7 +23,7 @@ export default class ToolbarManager {
         this.canvas = document.querySelector<HTMLElement>('#canvas');
 
         this.blockSelectorManager = new BlockSelectorManager('#blockSelector', this, BlockIndex.index);
-        this.blockSelectorManager.setActiveBlockByIndex(0);
+        // this.blockSelectorManager.setActiveBlockByIndex(0);
     }
 
 

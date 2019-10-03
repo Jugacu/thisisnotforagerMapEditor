@@ -32,9 +32,9 @@ export default class BlockSelectorManager {
             const id: number = parseInt(value[0]);
             const data: IBlockIndexData = value[1] as IBlockIndexData;
 
-            if (id === 0) {
-                return;
-            }
+            // if (id === 0) {
+            //     return;
+            // }
 
             const block = new Block(this, id, data);
             this.blocks.push(block);

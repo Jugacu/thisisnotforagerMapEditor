@@ -3,7 +3,7 @@ import Grid from '../../stage/Grid';
 import Editor from '../../Editor';
 import ToolbarManager from '../ToolbarManager';
 import * as PIXI from 'pixi.js';
-import BlockIndex from "../../indexes/BlockIndex";
+import BlockIndex from '../../indexes/BlockIndex';
 
 export default class EditTool extends Tool {
 
@@ -17,6 +17,10 @@ export default class EditTool extends Tool {
     }
 
     public onGridClick(grid: Grid): void {
+        if (this.toolbarManager.selectedBlockId === undefined) {
+            return;
+        }
+
         const texture = BlockIndex.getBlockData(this.toolbarManager.selectedBlockId);
         grid.texture = PIXI.utils.TextureCache[texture.name];
     }
