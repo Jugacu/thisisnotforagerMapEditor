@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import EditStage from '../EditStage';
-import BlockIndex, {IBlockIndex, IBlockIndexData} from '../indexes/BlockIndex';
+import BlockIndex, {IBlockIndex, IBlockIndexData} from '../../indexes/BlockIndex';
 
 export default class GridGenerator extends PIXI.Graphics {
 

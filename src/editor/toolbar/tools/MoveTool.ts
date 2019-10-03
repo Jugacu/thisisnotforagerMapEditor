@@ -19,7 +19,8 @@ export default class MoveTool extends Tool {
     }
 
     public onToolClick(): void {
-        this.editor.startDrag();
+        this.editor.resumeDrag();
+        this.editor.resumeWheel();
     }
 
 

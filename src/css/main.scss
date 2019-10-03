@@ -1,26 +1,108 @@
 body {
-    margin: 0;
-    overflow: hidden;
-    background: #392635;
+  margin: 0;
+  overflow: hidden;
+  background: #392635;
+  font-family: 'Roboto', sans-serif;
+}
+
+#toolbar, #blockSelector {
+  position: absolute;
+  z-index: 1;
+  background: white;
+  border-radius: 5px;
+  border: 5px solid #1d1d1d;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 5px 15px;
+
+  .active i {
+    color: #ee3e34;
+  }
 }
 
 #toolbar {
-    position: absolute;
-    z-index: 1;
-    background: white;
-    border-radius: 5px;
-    border: 5px solid #1d1d1d;
-    left: 15px;
-    top: 50%;
-    transform: translate(0, -50%);
-    padding: 5px 15px;
-    .active i {
-        color: #ee3e34;
-    }
+  left: 15px;
 }
-.tool {
+
+#blockSelector {
+  right: 15px;
+  display: grid;
+  grid-template-columns: 70px 70px;
+  row-gap: 5px;
+  column-gap: 5px;
+  max-height: 80vh;
+  overflow: auto;
+  .selected {
+    background: rgba(0, 0, 0, .1);
+  }
+
+  .block {
+    padding: 5px;
     cursor: pointer;
-    margin: 20px;
-    text-align: center;
-    font-size: 2em;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    .render {
+      width: 32px;
+      height: 32px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #316326;
+      box-sizing: border-box;
+      background: #63c74d;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.tool {
+  cursor: pointer;
+  margin: 20px;
+  text-align: center;
+  font-size: 2em;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0 none #fff;
+    border-radius: 0
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fff
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #bfbfbf
+}
+
+::-webkit-scrollbar-track {
+    background: #666;
+    border: 0 none #fff;
+    border-radius: 0
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #666
+}
+
+::-webkit-scrollbar-track:active {
+    background: #333
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent
 }

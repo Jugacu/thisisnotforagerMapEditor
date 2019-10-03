@@ -64,6 +64,20 @@ export default class Editor {
     }
 
     /**
+     * Pauses wheel viewport plugin
+     */
+    public pauseWheel(): void {
+        this.viewport.plugins.pause('wheel');
+    }
+
+    /**
+     * Resumes wheel viewport plugin
+     */
+    public resumeWheel(): void {
+        this.viewport.plugins.resume('wheel');
+    }
+
+    /**
      * Pauses drag viewport plugin
      */
     public pauseDrag(): void {
@@ -73,7 +87,7 @@ export default class Editor {
     /**
      * Resumes drag viewport plugin
      */
-    public startDrag(): void {
+    public resumeDrag(): void {
         this.viewport.plugins.resume('drag');
     }
 
