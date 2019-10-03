@@ -2,8 +2,11 @@ import * as PIXI from 'pixi.js';
 import Land from './Land';
 import {Tool} from '../toolbar/tools/Tool';
 import InteractionEvent = PIXI.interaction.InteractionEvent;
+import BlockIndex, {IBlockIndexData} from "../indexes/BlockIndex";
 
 export default class Grid extends PIXI.Sprite {
+
+    private blockId: number = 0;
 
     public constructor(
         private readonly land: Land,
@@ -39,4 +42,10 @@ export default class Grid extends PIXI.Sprite {
         }
     }
 
+    public setBlock(id: number) {
+        this.blockId = id;
+
+        const texture = BlockIndex.getBlockData(id);
+        this.texture = PIXI.utils.TextureCache[texture.name];
+    }
 }

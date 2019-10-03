@@ -23,14 +23,13 @@ export default class ToolbarManager {
         this.canvas = document.querySelector<HTMLElement>('#canvas');
 
         this.blockSelectorManager = new BlockSelectorManager('#blockSelector', this, BlockIndex.index);
-        // this.blockSelectorManager.setActiveBlockByIndex(0);
+        this.blockSelectorManager.setActiveBlockByIndex(1);
     }
 
 
     private setTools = (): void => {
         this.tools.push(new MoveTool('#move', this.editor, this, 'Space'));
         this.tools.push(new EditTool('#edit', this.editor, this, 'KeyE'));
-        this.tools.push(new EraseTool('#erase', this.editor, this, 'KeyD'));
     }
 
     public setActiveToolByIndex = (index: number): void => {
