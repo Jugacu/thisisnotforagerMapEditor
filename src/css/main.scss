@@ -6,6 +6,7 @@ body {
 }
 
 #toolbar, #blockSelector {
+  user-select: none;
   position: absolute;
   z-index: 1;
   background: white;

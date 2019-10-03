@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import Land from './Land';
 import {Tool} from '../toolbar/tools/Tool';
 import InteractionEvent = PIXI.interaction.InteractionEvent;
-import BlockIndex, {IBlockIndexData} from "../indexes/BlockIndex";
+import BlockIndex from '../indexes/BlockIndex';
 
 export default class Grid extends PIXI.Sprite {
 
@@ -13,8 +13,10 @@ export default class Grid extends PIXI.Sprite {
         x: number, y: number
     ) {
         super(
-            PIXI.utils.TextureCache['water']
+            undefined
         );
+
+        this.setBlock(this.blockId);
 
         this.position.set(x, y);
         this.interactive = true;
