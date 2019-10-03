@@ -21,9 +21,7 @@ export default class Block {
         blockName.classList.add('name');
 
         this.blockElement.innerText = blockData.name;
-
-        console.log(blockData.color.toString(16), darker.toString(16));
-
+        
         blockRenderer.style.borderColor = `#${darker.toString(16)}`;
         blockRenderer.style.backgroundColor = `#${blockData.color.toString(16)}`;
 
