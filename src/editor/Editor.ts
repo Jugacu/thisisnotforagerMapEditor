@@ -141,6 +141,7 @@ export default class Editor {
      */
     public resize(width: number, height: number): void {
         this.pixi.renderer.resize(width, height);
+        this.viewport.resize(width, height);
     }
 
     public get renderer(): PIXI.Renderer {
