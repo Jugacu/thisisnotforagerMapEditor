@@ -5,7 +5,7 @@ import EditStage from './EditStage';
 
 export default class Land extends PIXI.Container {
 
-    private readonly grids: Grid[][] = [];
+    private grids: Grid[][] = [];
     public static readonly GRID_COUNT = 9 + 3;
 
 
@@ -41,5 +41,26 @@ export default class Land extends PIXI.Container {
         this.addChild(graphics);
     }
 
+    public setGrid(data: number[][]): void {
+        this.grids = [];
+        this.removeChildren();
+
+        for (let i = 0; i < data.length; i ++) {
+            this.grids.push([]);
+            for (let j = 0; j < data[i].length; j ++) {
+                const grid = new Grid(this, this.position.x + i  * GridGenerator.SIZE, this.position.y + j * GridGenerator.SIZE);
+                grid.setBlock(data[i][j]);
+                this.grids[i].push(grid);
+                this.addChild(grid);
+            }
+        }
+
+        this.drawBounds();
+    }
+
+
+    public getGrids(): Grid[][] {
+        return this.grids;
+    }
 
 }

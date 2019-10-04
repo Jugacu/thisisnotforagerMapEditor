@@ -34,4 +34,23 @@ export default class EditStage extends PIXI.Container {
         }
     }
 
+    public setLands(data: number[][][][]): void {
+        this.lands = [];
+        this.removeChildren();
+
+        for (let i = 0; i < data.length; i++) {
+            this.lands.push([]);
+            for (let j = 0; j < data[i].length; j++) {
+                const land = new Land(this, i * Land.GRID_COUNT * GridGenerator.SIZE / 2, j * Land.GRID_COUNT * GridGenerator.SIZE / 2);
+                land.setGrid(data[i][j]);
+                this.lands[i].push(land);
+                this.addChild(land);
+            }
+        }
+    }
+
+    public getLands(): Land[][] {
+        return this.lands;
+    }
+
 }

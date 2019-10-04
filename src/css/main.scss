@@ -5,7 +5,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#toolbar, #blockSelector {
+#toolbar, #blockSelector, #bag {
   user-select: none;
   position: absolute;
   z-index: 1;
@@ -19,6 +19,41 @@ body {
   .active i {
     color: #ee3e34;
   }
+}
+
+#bag {
+  transform: none;
+  top: 15px;
+  right: 15px;
+}
+
+#importer {
+  display: none;
+}
+
+label[for=importer] {
+  -webkit-appearance: button;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: buttontext;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  background-color: buttonface;
+  box-sizing: border-box;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonface;
+  border-image: initial;
 }
 
 #toolbar {

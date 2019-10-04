@@ -50,4 +50,8 @@ export default class Grid extends PIXI.Sprite {
         const texture = BlockIndex.getBlockData(id);
         this.texture = PIXI.utils.TextureCache[texture.name];
     }
+
+    public getBlockId(): number {
+        return this.blockId;
+    }
 }
