@@ -20,12 +20,12 @@ export default class Block {
         blockRenderer.classList.add('render');
         blockName.classList.add('name');
 
-        this.blockElement.innerText = blockData.name;
+        blockName.innerText = blockData.name;
 
         blockRenderer.style.borderColor = `#${darker.toString(16)}`;
         blockRenderer.style.backgroundColor = `#${blockData.color.toString(16)}`;
 
-        this.blockElement.prepend(blockRenderer);
+        this.blockElement.append(blockRenderer);
         this.blockElement.append(blockName);
 
         this.blockElement.addEventListener('click', () => this.onClick());
