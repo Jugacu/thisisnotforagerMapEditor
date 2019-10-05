@@ -20,6 +20,7 @@ export default class Block {
         blockRenderer.classList.add('render');
         blockName.classList.add('name');
 
+        blockName.setAttribute('title', blockData.name);
         blockName.innerText = blockData.name;
 
         blockRenderer.style.borderColor = `#${darker.toString(16)}`;

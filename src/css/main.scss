@@ -81,6 +81,14 @@ label[for=importer] {
     justify-content: center;
     border-radius: 5px;
 
+    .name {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+
     .render {
       width: 32px;
       height: 32px;
