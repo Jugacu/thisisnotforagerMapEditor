@@ -109,6 +109,22 @@ label[for=importer] {
   font-size: 2em;
 }
 
+#footer {
+  color: #949494;
+  position: absolute;
+  z-index: 2;
+  bottom: 15px;
+  text-align: center;
+  user-select: none;
+  left: 50%;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  a {
+    color: rgb(217, 217, 217);
+    pointer-events: initial;
+  }
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px
