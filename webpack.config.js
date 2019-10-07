@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const ROOT = path.resolve( __dirname, 'src' );
@@ -69,6 +70,11 @@ module.exports = {
             // both options are optional
             filename: "[name].css",
             chunkFilename: "[id].css"
+        }),
+        new HtmlWebpackPlugin({
+            hash: true,
+            template: 'index.html',
+            filename: 'index.html' //relative to root of the application
         })
     ],
     devtool: 'cheap-module-source-map',
