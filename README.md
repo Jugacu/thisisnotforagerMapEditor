@@ -1,3 +1,3 @@
 thisisnotforagerMapEditor
 ====
-![IMAGE](https://i.imgur.com/vXjXcuR.png)
+![IMAGE](https://i.imgur.com/r3JHOE0.png)
