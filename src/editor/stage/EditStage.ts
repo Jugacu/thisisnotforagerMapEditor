@@ -23,6 +23,9 @@ export default class EditStage extends PIXI.Container {
     }
 
     public getLandAt(x: number, y: number): Land {
+        if (!this.lands[x]) {
+            return undefined;
+        }
         return this.lands[x][y];
     }
 

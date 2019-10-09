@@ -58,7 +58,9 @@ export default class BucketTool extends Tool {
 
         let result: number[] = [a, b, c, d];
 
-        if (d === this.editor.getLandAt(a, b).getLengthOfXGridAt(c) - 1) {
+        const land = this.editor.getLandAt(a, b);
+
+        if (land && d === land.getLengthOfXGridAt(c) - 1) {
             result[1]++;
             result[3] = 0;
         } else {
@@ -71,9 +73,10 @@ export default class BucketTool extends Tool {
     private left(a: number, b: number, c: number, d: number): number[] {
 
         let result: number[] = [a, b, c, d];
+        const land = this.editor.getLandAt(a, b);
 
-        if (d === 0) {
-            result[3] = this.editor.getLandAt(a, b).getLengthOfXGridAt(c) - 1;
+        if (land && d === 0) {
+            result[3] = land.getLengthOfXGridAt(c) - 1;
             result[1]--;
         } else {
             result[3]--;
@@ -86,8 +89,10 @@ export default class BucketTool extends Tool {
 
         let result: number[] = [a, b, c, d];
 
-        if (c === 0) {
-            result[2] = this.editor.getLandAt(a, b).getLengthOfYGrid() - 1;
+        const land = this.editor.getLandAt(a, b);
+
+        if (land && c === 0) {
+            result[2] = land.getLengthOfYGrid() - 1;
             result[0]--;
         } else {
             result[2]--;
@@ -100,7 +105,9 @@ export default class BucketTool extends Tool {
 
         let result: number[] = [a, b, c, d];
 
-        if (c === this.editor.getLandAt(a, b).getLengthOfYGrid() - 1) {
+        const land = this.editor.getLandAt(a, b);
+
+        if (land && c === land.getLengthOfYGrid() - 1) {
             result[0]++;
             result[2] = 0;
         } else {
@@ -113,45 +120,84 @@ export default class BucketTool extends Tool {
 
     private expand(before: number, after: number, a: number, b: number, c: number, d: number): void {
 
-        this.editor.getLandAt(a, b).getGridAt(c, d).setBlock(after);
-        let nextPos: number[] = this.left(a, b, c, d);
-
-        if (nextPos[1] === -1) {
-            return;
+        let land = this.editor.getLandAt(a, b);
+        let grid;
+        if (land) {
+            grid = land.getGridAt(c, d);
+        }
+        if (grid) {
+            this.editor.getLandAt(a, b).getGridAt(c, d).setBlock(after);
         }
 
-        if (this.editor.getLandAt(nextPos[0], nextPos[1]).getGridAt(nextPos[2], nextPos[3]).getBlockId() === before) {
-            this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+        let nextPos: number[] = this.left(a, b, c, d);
+
+        if (!nextPos.includes(undefined)) {
+            if (nextPos[1] === -1) {
+                return;
+            }
+
+            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
+            grid = undefined;
+            if (land) {
+                grid = land.getGridAt(nextPos[2], nextPos[3]);
+            }
+
+            if (grid && grid.getBlockId() === before) {
+                this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+            }
         }
 
         nextPos = this.right(a, b, c, d);
 
-        if (nextPos[1] === 3) {
-            return;
-        }
+        if (!nextPos.includes(undefined)) {
+            if (nextPos[1] === 3) {
+                return;
+            }
 
-        if (this.editor.getLandAt(nextPos[0], nextPos[1]).getGridAt(nextPos[2], nextPos[3]).getBlockId() === before) {
-            this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
+            grid = undefined;
+            if (land) {
+                grid = land.getGridAt(nextPos[2], nextPos[3]);
+            }
+
+            if (grid && grid.getBlockId() === before) {
+                this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+            }
         }
 
         nextPos = this.top(a, b, c, d);
+        if (!nextPos.includes(undefined)) {
+            if ((nextPos[0] === -1) || (nextPos[0] === 3)) {
+                return;
+            }
 
-        if ((nextPos[0] === -1) || (nextPos[0] === 3)) {
-            return;
-        }
+            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
+            grid = undefined;
+            if (land) {
+                grid = land.getGridAt(nextPos[2], nextPos[3]);
+            }
 
-        if (this.editor.getLandAt(nextPos[0], nextPos[1]).getGridAt(nextPos[2], nextPos[3]).getBlockId() === before) {
-            this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+            if (grid && grid.getBlockId() === before) {
+                this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+            }
         }
 
         nextPos = this.bot(a, b, c, d);
 
-        if (nextPos[2] === -1 || (nextPos[0] === -1) || (nextPos[0] === 3)) {
-            return;
-        }
+        if (!nextPos.includes(undefined)) {
+            if (nextPos[2] === -1 || (nextPos[0] === -1) || (nextPos[0] === 3)) {
+                return;
+            }
 
-        if (this.editor.getLandAt(nextPos[0], nextPos[1]).getGridAt(nextPos[2], nextPos[3]).getBlockId() === before) {
-            this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
+            grid = undefined;
+            if (land) {
+                grid = land.getGridAt(nextPos[2], nextPos[3]);
+            }
+
+            if (grid && grid.getBlockId() === before) {
+                this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
+            }
         }
     }
 
