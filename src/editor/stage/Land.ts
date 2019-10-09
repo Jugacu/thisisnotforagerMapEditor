@@ -41,6 +41,18 @@ export default class Land extends PIXI.Container {
         this.addChild(graphics);
     }
 
+    public setLandText(x: number, y: number) {
+        const text = new PIXI.Text(
+            `(${x},${y})`,
+            {
+                fill: 'rgba(255, 255, 255, 0.5)',
+                fontSize: '11px',
+                fontFamily: 'monospace'
+            }
+        );
+        this.addChild(text);
+    }
+
     public setGrid(data: number[][]): void {
         this.grids = [];
         this.removeChildren();
@@ -48,7 +60,7 @@ export default class Land extends PIXI.Container {
         for (let i = 0; i < data.length; i ++) {
             this.grids.push([]);
             for (let j = 0; j < data[i].length; j ++) {
-                const grid = new Grid(this, this.position.x + i  * GridGenerator.SIZE, this.position.y + j * GridGenerator.SIZE);
+                const grid = new Grid(this, this.position.x + j  * GridGenerator.SIZE, this.position.y + i * GridGenerator.SIZE);
                 grid.setBlock(data[i][j]);
                 this.grids[i].push(grid);
                 this.addChild(grid);

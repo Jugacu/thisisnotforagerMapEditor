@@ -23,11 +23,10 @@ export default class EditStage extends PIXI.Container {
     }
 
     private createLands(): void {
-
         for (let i = 0; i < EditStage.LAND_COUNT; i++) {
             this.lands.push([]);
             for (let j = 0; j < EditStage.LAND_COUNT; j++) {
-                const land = new Land(this, i * Land.GRID_COUNT * GridGenerator.SIZE, j * Land.GRID_COUNT * GridGenerator.SIZE);
+                const land = new Land(this, j * Land.GRID_COUNT * GridGenerator.SIZE, i * Land.GRID_COUNT * GridGenerator.SIZE);
                 this.lands[i].push(land);
                 this.addChild(land);
             }
@@ -41,7 +40,7 @@ export default class EditStage extends PIXI.Container {
         for (let i = 0; i < data.length; i++) {
             this.lands.push([]);
             for (let j = 0; j < data[i].length; j++) {
-                const land = new Land(this, i * Land.GRID_COUNT * GridGenerator.SIZE / 2, j * Land.GRID_COUNT * GridGenerator.SIZE / 2);
+                const land = new Land(this, j * Land.GRID_COUNT * GridGenerator.SIZE / 2, i * Land.GRID_COUNT * GridGenerator.SIZE / 2);
                 land.setGrid(data[i][j]);
                 this.lands[i].push(land);
                 this.addChild(land);
