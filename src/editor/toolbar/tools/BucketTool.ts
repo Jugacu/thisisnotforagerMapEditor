@@ -123,29 +123,15 @@ export default class BucketTool extends Tool {
         this.editor.getLandAt(a, b).getGridAt(c, d).setBlock(after);
 
         let nextPos: number[] = this.left(a, b, c, d);
-        if (nextPos[1] === -1) {
-            return;
-        }
         this.checkAndExpand(before, after, nextPos);
-
 
         nextPos = this.right(a, b, c, d);
-        if (nextPos[1] === 3) {
-            return;
-        }
         this.checkAndExpand(before, after, nextPos);
 
-
         nextPos = this.top(a, b, c, d);
-        if ((nextPos[0] === -1) || (nextPos[0] === 3)) {
-            return;
-        }
         this.checkAndExpand(before, after, nextPos);
 
         nextPos = this.bot(a, b, c, d);
-        if (nextPos[2] === -1 || (nextPos[0] === -1) || (nextPos[0] === 3)) {
-            return;
-        }
         this.checkAndExpand(before, after, nextPos);
 
     }
