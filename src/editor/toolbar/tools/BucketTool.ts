@@ -120,77 +120,41 @@ export default class BucketTool extends Tool {
 
     private expand(before: number, after: number, a: number, b: number, c: number, d: number): void {
 
-        let land = this.editor.getLandAt(a, b);
-        let grid;
-        if (land) {
-            grid = land.getGridAt(c, d);
-        }
-        if (grid) {
-            this.editor.getLandAt(a, b).getGridAt(c, d).setBlock(after);
-        }
+        this.editor.getLandAt(a, b).getGridAt(c, d).setBlock(after);
 
         let nextPos: number[] = this.left(a, b, c, d);
-
-        if (!nextPos.includes(undefined)) {
-            if (nextPos[1] === -1) {
-                return;
-            }
-
-            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
-            grid = undefined;
-            if (land) {
-                grid = land.getGridAt(nextPos[2], nextPos[3]);
-            }
-
-            if (grid && grid.getBlockId() === before) {
-                this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
-            }
+        if (nextPos[1] === -1) {
+            return;
         }
+        this.checkAndExpand(before, after, nextPos);
+
 
         nextPos = this.right(a, b, c, d);
-
-        if (!nextPos.includes(undefined)) {
-            if (nextPos[1] === 3) {
-                return;
-            }
-
-            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
-            grid = undefined;
-            if (land) {
-                grid = land.getGridAt(nextPos[2], nextPos[3]);
-            }
-
-            if (grid && grid.getBlockId() === before) {
-                this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
-            }
+        if (nextPos[1] === 3) {
+            return;
         }
+        this.checkAndExpand(before, after, nextPos);
+
 
         nextPos = this.top(a, b, c, d);
-        if (!nextPos.includes(undefined)) {
-            if ((nextPos[0] === -1) || (nextPos[0] === 3)) {
-                return;
-            }
-
-            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
-            grid = undefined;
-            if (land) {
-                grid = land.getGridAt(nextPos[2], nextPos[3]);
-            }
-
-            if (grid && grid.getBlockId() === before) {
-                this.expand(before, after, nextPos[0], nextPos[1], nextPos[2], nextPos[3]);
-            }
+        if ((nextPos[0] === -1) || (nextPos[0] === 3)) {
+            return;
         }
+        this.checkAndExpand(before, after, nextPos);
 
         nextPos = this.bot(a, b, c, d);
+        if (nextPos[2] === -1 || (nextPos[0] === -1) || (nextPos[0] === 3)) {
+            return;
+        }
+        this.checkAndExpand(before, after, nextPos);
 
+    }
+
+    private checkAndExpand(before: number, after: number, nextPos: number[]): void {
         if (!nextPos.includes(undefined)) {
-            if (nextPos[2] === -1 || (nextPos[0] === -1) || (nextPos[0] === 3)) {
-                return;
-            }
+            const land = this.editor.getLandAt(nextPos[0], nextPos[1]);
+            let grid;
 
-            land = this.editor.getLandAt(nextPos[0], nextPos[1]);
-            grid = undefined;
             if (land) {
                 grid = land.getGridAt(nextPos[2], nextPos[3]);
             }

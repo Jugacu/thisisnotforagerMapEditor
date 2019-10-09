@@ -24,20 +24,26 @@ export default class Land extends PIXI.Container {
     }
 
     public getGridAt(x: number, y: number): Grid {
+        if (!this.grids[x]) {
+            return undefined;
+        }
+
         return this.grids[x][y];
     }
+
     public getLengthOfXGridAt(x: number): number {
         return this.grids[x].length;
     }
+
     public getLengthOfYGrid(): number {
         return this.grids.length;
     }
 
     private createGrid(): void {
-        for (let i = 0; i < Land.GRID_COUNT; i ++) {
+        for (let i = 0; i < Land.GRID_COUNT; i++) {
             this.grids.push([]);
-            for (let j = 0; j < Land.GRID_COUNT; j ++) {
-                const grid = new Grid(this, this.position.x + j  * GridGenerator.SIZE, this.position.y + i * GridGenerator.SIZE);
+            for (let j = 0; j < Land.GRID_COUNT; j++) {
+                const grid = new Grid(this, this.position.x + j * GridGenerator.SIZE, this.position.y + i * GridGenerator.SIZE);
                 this.grids[i].push(grid);
                 this.addChild(grid);
             }
@@ -67,10 +73,10 @@ export default class Land extends PIXI.Container {
         this.grids = [];
         this.removeChildren();
 
-        for (let i = 0; i < data.length; i ++) {
+        for (let i = 0; i < data.length; i++) {
             this.grids.push([]);
-            for (let j = 0; j < data[i].length; j ++) {
-                const grid = new Grid(this, this.position.x + j  * GridGenerator.SIZE, this.position.y + i * GridGenerator.SIZE);
+            for (let j = 0; j < data[i].length; j++) {
+                const grid = new Grid(this, this.position.x + j * GridGenerator.SIZE, this.position.y + i * GridGenerator.SIZE);
                 grid.setBlock(data[i][j]);
                 this.grids[i].push(grid);
                 this.addChild(grid);
