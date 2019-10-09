@@ -36,7 +36,6 @@ export abstract class Tool {
 
     private fireOnClick = (): void => {
         this.toolbarManager.setActiveTool(this);
-        this.editor.pauseDrag();
         this.onToolClick();
     }
 

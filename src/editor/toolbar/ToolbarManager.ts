@@ -5,6 +5,7 @@ import EditTool from './tools/EditTool';
 import EraseTool from './tools/EraseTool';
 import BlockSelectorManager from './BlockSelectorManager';
 import BlockIndex from '../indexes/BlockIndex';
+import BucketTool from './tools/BucketTool';
 
 export default class ToolbarManager {
 
@@ -30,12 +31,12 @@ export default class ToolbarManager {
     private setTools = (): void => {
         this.tools.push(new MoveTool('#move', this.editor, this, 'Space'));
         this.tools.push(new EditTool('#edit', this.editor, this, 'KeyE'));
+        this.tools.push(new BucketTool('#bucket', this.editor, this, 'KeyC'));
     }
 
     public setActiveToolByIndex = (index: number): void => {
         const tool: Tool = this.tools[index];
         if (tool) {
-            tool.onToolClick();
             this.setActiveTool(tool);
         }
     }
@@ -43,8 +44,12 @@ export default class ToolbarManager {
     public setActiveTool = (tool: Tool): void => {
         this.removeSelectedClass();
         tool.getHTMLElement().classList.add('active');
+
         this.canvas.style.cursor = tool.cursor;
         this.activeTool = tool;
+
+        this.editor.pauseDrag();
+        tool.onToolClick();
     }
 
     public getActiveTool = (): Tool => {

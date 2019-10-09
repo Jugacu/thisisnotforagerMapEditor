@@ -74,6 +74,14 @@ export default class Editor {
         this.pauseDrag();
     }
 
+    public getLandAt(x: number, y: number): Land {
+        return this.stage.getLandAt(x, y);
+    }
+
+    public getLands(): Land[][] {
+        return this.stage.getLands();
+    }
+
     public getData(): number[][][][] {
         const data: number[][][][] = [];
 
@@ -82,13 +90,13 @@ export default class Editor {
         lands.forEach((lands: Land[], i: number) => {
             data.push([]);
             lands.forEach((land: Land, j: number) => {
-               data[i].push([]);
-               land.getGrids().forEach((grids: Grid[], k: number) => {
-                  data[i][j].push([]);
-                  grids.forEach((grid: Grid) => {
-                      data[i][j][k].push(grid.getBlockId());
-                  });
-               });
+                data[i].push([]);
+                land.getGrids().forEach((grids: Grid[], k: number) => {
+                    data[i][j].push([]);
+                    grids.forEach((grid: Grid) => {
+                        data[i][j][k].push(grid.getBlockId());
+                    });
+                });
             });
         });
 
@@ -130,7 +138,7 @@ export default class Editor {
     /**
      * Returns the html canvas of the PIXI app
      */
-    public getView (): HTMLCanvasElement {
+    public getView(): HTMLCanvasElement {
         return this.pixi.view;
     }
 

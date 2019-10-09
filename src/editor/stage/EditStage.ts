@@ -22,6 +22,10 @@ export default class EditStage extends PIXI.Container {
         this.createLands();
     }
 
+    public getLandAt(x: number, y: number): Land {
+        return this.lands[x][y];
+    }
+
     private createLands(): void {
         for (let i = 0; i < EditStage.LAND_COUNT; i++) {
             this.lands.push([]);

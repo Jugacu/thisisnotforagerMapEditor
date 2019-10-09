@@ -23,6 +23,16 @@ export default class Land extends PIXI.Container {
         this.position.y = y;
     }
 
+    public getGridAt(x: number, y: number): Grid {
+        return this.grids[x][y];
+    }
+    public getLengthOfXGridAt(x: number): number {
+        return this.grids[x].length;
+    }
+    public getLengthOfYGrid(): number {
+        return this.grids.length;
+    }
+
     private createGrid(): void {
         for (let i = 0; i < Land.GRID_COUNT; i ++) {
             this.grids.push([]);

@@ -9,7 +9,7 @@ export default class Grid extends PIXI.Sprite {
     private blockId: number = 0;
 
     public constructor(
-        private readonly land: Land,
+        public readonly land: Land,
         x: number, y: number
     ) {
         super(

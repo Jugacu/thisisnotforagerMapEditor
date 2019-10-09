@@ -9,7 +9,7 @@ export default class BlockSelectorManager {
 
     public constructor(
         private readonly element: string,
-        private readonly toolbarManager: ToolbarManager,
+        public readonly toolbarManager: ToolbarManager,
         private readonly blockIndex: IBlockIndex
     ) {
         this.HTMLElement = document.querySelector(element);
