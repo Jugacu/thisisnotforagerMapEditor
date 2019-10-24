@@ -6,7 +6,7 @@ import EditStage from './EditStage';
 export default class Land extends PIXI.Container {
 
     private grids: Grid[][] = [];
-    public static readonly GRID_COUNT = 9 + 3;
+    public static GRID_COUNT = 9 + 3;
 
 
     public constructor(

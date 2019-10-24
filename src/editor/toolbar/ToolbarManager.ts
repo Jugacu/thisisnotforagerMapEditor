@@ -6,12 +6,14 @@ import EraseTool from './tools/EraseTool';
 import BlockSelectorManager from './BlockSelectorManager';
 import BlockIndex from '../indexes/BlockIndex';
 import BucketTool from './tools/BucketTool';
+import InputManager from './InputManager';
 
 export default class ToolbarManager {
 
     private tools: Tool[] = [];
     private activeTool: Tool;
     private blockSelectorManager: BlockSelectorManager;
+    private inputManager: InputManager;
     public selectedBlockId: number;
 
     // Todo: change this canvas to be inserted other way
@@ -25,6 +27,8 @@ export default class ToolbarManager {
 
         this.blockSelectorManager = new BlockSelectorManager('#blockSelector', this, BlockIndex.index);
         this.blockSelectorManager.setActiveBlockByIndex(1);
+
+        this.inputManager = new InputManager('#inputs', this.editor);
     }
 
 

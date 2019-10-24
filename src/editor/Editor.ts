@@ -107,6 +107,10 @@ export default class Editor {
         this.stage.setLands(data);
     }
 
+    public redoMap() {
+        this.stage.redoMap();
+    }
+
     /**
      * Pauses wheel viewport plugin
      */

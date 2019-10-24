@@ -5,7 +5,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#toolbar, #blockSelector, #bag {
+#toolbar, #blockSelector, #bag, #inputs {
   user-select: none;
   position: absolute;
   z-index: 1;
@@ -19,6 +19,30 @@ body {
   .active i {
     color: #ee3e34;
   }
+}
+
+#inputs {
+  transform: none;
+  top: 15px;
+  left: 15px;
+}
+
+#inputs div {
+  margin: 10px 0;
+  display: flex;
+}
+
+#inputs label {
+  width: 50px;
+}
+
+#gridCount, #landCount {
+  width: 25px;
+  text-align: center;
+}
+
+#inputChange {
+  margin: auto;
 }
 
 #bag {
