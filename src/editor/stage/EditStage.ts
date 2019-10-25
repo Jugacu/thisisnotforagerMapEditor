@@ -42,6 +42,7 @@ export default class EditStage extends PIXI.Container {
 
     public setLands(data: number[][][][]): void {
         this.deleteMap();
+        this.changeSize(data);
 
         for (let i = 0; i < data.length; i++) {
             this.lands.push([]);
@@ -50,6 +51,15 @@ export default class EditStage extends PIXI.Container {
                 land.setGrid(data[i][j]);
                 this.lands[i].push(land);
                 this.addChild(land);
+            }
+        }
+    }
+
+    private changeSize(data: number[][][][]) {
+        if (data) {
+            EditStage.LAND_COUNT = data.length;
+            if (data[0][0]) {
+                Land.GRID_COUNT = data[0][0].length;
             }
         }
     }

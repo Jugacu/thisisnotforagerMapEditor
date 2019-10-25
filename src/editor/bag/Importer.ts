@@ -23,7 +23,6 @@ export default class Importer {
     private import(e: HTMLInputEvent): void {
         const reader = new FileReader();
         reader.onload = () => this.dataLoaded(reader);
-
         reader.readAsText(e.target.files[0]);
     }
 
@@ -32,7 +31,7 @@ export default class Importer {
             const parsed = JSON.parse(reader.result.toString());
             this.editor.importData(parsed);
         } catch (e) {
-            console.error(e);
+            console.error(e)
         }
     }
 }
