@@ -25,24 +25,50 @@ body {
   transform: none;
   top: 15px;
   left: 15px;
-}
-
-#inputs div {
-  margin: 10px 0;
-  display: flex;
+  width: 90px;
 }
 
 #inputs label {
   width: 50px;
+  margin: auto;
+}
+
+#change > div {
+  margin: 10px 0;
+  display: flex;
 }
 
 #gridCount, #landCount {
   width: 25px;
   text-align: center;
+  margin: auto;
+}
+
+#errorNumbers {
+  color: red;
+  font-size: x-small;
+  display: none;
+  width: 100%;
+  text-align: center;
 }
 
 #inputChange {
   margin: auto;
+}
+
+#changeSure {
+  display: none;
+}
+
+#changeSure div {
+  text-align: center;
+}
+
+#changeSure span {
+  font-size: x-small;
+  margin: 10px 0;
+  text-align: center;
+  display: block;
 }
 
 #bag {
