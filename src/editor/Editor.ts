@@ -57,6 +57,14 @@ export default class Editor {
             minWidth: 1
         });
 
+        this.center();
+
+        this.viewport.addChildAt(this.stage, 0);
+
+        this.pauseDrag();
+    }
+
+    private center() {
         const stage = this.stage;
 
         stage.pivot = new PIXI.Point(
@@ -68,10 +76,6 @@ export default class Editor {
             this.pixi.renderer.width / 2,
             this.pixi.renderer.height / 2
         );
-
-        this.viewport.addChildAt(stage, 0);
-
-        this.pauseDrag();
     }
 
     public getLandAt(x: number, y: number): Land {
@@ -105,6 +109,12 @@ export default class Editor {
 
     public importData(data: number[][][][]): void {
         this.stage.setLands(data);
+        this.center();
+    }
+
+    public redoMap() {
+        this.stage.redoMap();
+        this.center();
     }
 
     /**

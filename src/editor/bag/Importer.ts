@@ -20,10 +20,11 @@ export default class Importer {
         this.HTMLElement.addEventListener('change', (e: HTMLInputEvent) => this.import(e));
     }
 
+    // TODO if upload file change map cannot reupload same file
+
     private import(e: HTMLInputEvent): void {
         const reader = new FileReader();
         reader.onload = () => this.dataLoaded(reader);
-
         reader.readAsText(e.target.files[0]);
     }
 

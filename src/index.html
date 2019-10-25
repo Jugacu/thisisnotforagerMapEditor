@@ -8,6 +8,29 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="inputs">
+    <div id="change">
+        <div>
+            <label for="landCount">Lands</label>
+            <input id="landCount" type="text">
+        </div>
+        <div>
+            <label for="gridCount">Grids</label>
+            <input id="gridCount" type="text">
+        </div>
+        <span id="errorNumbers"></span>
+        <div>
+            <input id="inputChange" type="button" value="Change">
+        </div>
+    </div>
+    <div id="changeSure">
+        <span>The current map will be lost. Are you sure?</span>
+        <div>
+            <input id="changeYes" type="button" value="Yes">
+            <input id="changeNo" type="button" value="No">
+        </div>
+    </div>
+</div>
 <div id="bag">
     <button id="exporter">Export</button>
     <label for="importer">Import</label>

@@ -6,7 +6,7 @@ import GridGenerator from './generators/GridGenerator';
 
 export default class EditStage extends PIXI.Container {
 
-    private static readonly LAND_COUNT = 3;
+    public static LAND_COUNT = 3;
     private readonly gridGenerator: GridGenerator;
 
     private lands: Land[][] = [];
@@ -41,8 +41,8 @@ export default class EditStage extends PIXI.Container {
     }
 
     public setLands(data: number[][][][]): void {
-        this.lands = [];
-        this.removeChildren();
+        this.deleteMap();
+        this.changeSize(data);
 
         for (let i = 0; i < data.length; i++) {
             this.lands.push([]);
@@ -53,6 +53,25 @@ export default class EditStage extends PIXI.Container {
                 this.addChild(land);
             }
         }
+    }
+
+    private changeSize(data: number[][][][]) {
+        if (data) {
+            EditStage.LAND_COUNT = data.length;
+            if (data[0][0]) {
+                Land.GRID_COUNT = data[0][0].length;
+            }
+        }
+    }
+
+    private deleteMap() {
+        this.lands = [];
+        this.removeChildren();
+    }
+
+    public redoMap() {
+        this.deleteMap();
+        this.createLands();
     }
 
     public getLands(): Land[][] {
