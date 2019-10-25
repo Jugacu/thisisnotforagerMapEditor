@@ -20,6 +20,8 @@ export default class Importer {
         this.HTMLElement.addEventListener('change', (e: HTMLInputEvent) => this.import(e));
     }
 
+    // TODO if upload file change map cannot reupload same file
+
     private import(e: HTMLInputEvent): void {
         const reader = new FileReader();
         reader.onload = () => this.dataLoaded(reader);
@@ -31,7 +33,7 @@ export default class Importer {
             const parsed = JSON.parse(reader.result.toString());
             this.editor.importData(parsed);
         } catch (e) {
-            console.error(e)
+            console.error(e);
         }
     }
 }
